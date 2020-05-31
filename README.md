@@ -28,4 +28,4 @@ main() {
 
 Please file feature requests and bugs at the [issue tracker][tracker].
 
-[tracker]: https://github.com/Israel77/Bisect.git
+[tracker]: https://github.com/Israel77/Bisect/issues
