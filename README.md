@@ -1,6 +1,6 @@
 Array bisection algorithm for Dart.
 
-Simple array bisection algorithm translated from [Python's default library](docs.python.org/3/library/bisect.html) and implemented as extension methods for the class.
+Simple array bisection algorithm translated from [Python's default library](https://docs.python.org/3/library/bisect.html) and implemented as extension methods for the class.
 
 These methods are used to insert an element in a sorted list, without needing to sort it again.
 
