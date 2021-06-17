@@ -14,7 +14,7 @@ extension Bisect<E> on List<E> {
   ///
   /// Equivalent to:
   /// `list.insert(list.bisectRight(element), element)`
-  void insortRight(E element, {int Function(E, E) compare, int low, int high}) {
+  void insortRight(E element, {int Function(E, E)? compare, int? low, int? high}) {
     low = bisectRight(element, compare: compare, low: low, high: high);
     insert(low, element);
   }
@@ -32,8 +32,8 @@ extension Bisect<E> on List<E> {
   ///
   /// Two optional parameters [low] (`0` by default) and [high] (`list.length` by default)
   /// can be provided to bisect only an slice of this list where the element will be inserted.
-  int bisectRight(E element, {int Function(E, E) compare, int low, int high}) {
-    compare ??= Comparable.compare as Function(E, E);
+  int bisectRight(E element, {int Function(E, E)? compare, int? low, int? high}) {
+    compare ??= Comparable.compare as int Function(E, E);
     low ??= 0;
     high ??= length;
 
@@ -42,7 +42,7 @@ extension Bisect<E> on List<E> {
     }
 
     // This algorithm is very similar to a binary search.
-    while (low < high) {
+    while (low! < high!) {
       // At each iteration the algorithm looks at a slice of this list
       // where the element can be inserted, and divides it in half.
       var mid = (low + high) ~/ 2;
@@ -74,7 +74,7 @@ extension Bisect<E> on List<E> {
   ///
   /// Equivalent to:
   /// `list.insert(list.bisectLeft(element), element)`
-  void insortLeft(E element, {int Function(E, E) compare, int low, int high}) {
+  void insortLeft(E element, {int Function(E, E)? compare, int? low, int? high}) {
     low = bisectLeft(element, compare: compare, low: low, high: high);
     insert(low, element);
   }
@@ -92,8 +92,8 @@ extension Bisect<E> on List<E> {
   ///
   /// Two optional parameters [low] (`0` by default) and [high] (`list.length` by default)
   /// can be provided to bisect only an slice of this list where the element will be inserted.
-  int bisectLeft(E element, {int Function(E, E) compare, int low, int high}) {
-    compare ??= Comparable.compare as Function(E, E);
+  int bisectLeft(E element, {int Function(E, E)? compare, int? low, int? high}) {
+    compare ??= Comparable.compare as int Function(E, E);
     low ??= 0;
     high ??= length;
 
@@ -104,7 +104,7 @@ extension Bisect<E> on List<E> {
     // This algorithm is identical to bisectRight with only
     // a minor tweak, so when the element is found on the list
     // it is inserted to the leftmost position.
-    while (low < high) {
+    while (low! < high!) {
       var mid = (low + high) ~/ 2;
       if (compare(this[mid], element) < 0) {
         low = mid + 1;
@@ -119,11 +119,11 @@ extension Bisect<E> on List<E> {
   // Aliases
 
   /// Just and alias for [bisectRight].
-  int bisect(E element, {int Function(E, E) compare, int low, int high}) =>
+  int bisect(E element, {int Function(E, E)? compare, int? low, int? high}) =>
       bisectRight(element, compare: compare, low: low, high: high);
 
   /// Just an alias for [insortRight].
-  void insort(E element, {int Function(E, E) compare, int low, int high}) {
+  void insort(E element, {int Function(E, E)? compare, int? low, int? high}) {
     insortRight(element, compare: compare, low: low, high: high);
   }
 }
